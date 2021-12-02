@@ -17,7 +17,7 @@ public class OAuthController {
     @GetMapping("/callback")
     public OAuth2AccessToken getToken(@RequestParam("code") String code) {
         oAuth2RestTemplate.getOAuth2ClientContext().getAccessTokenRequest().setAuthorizationCode(code);
-        oAuth2RestTemplate.getOAuth2ClientContext().getAccessTokenRequest().setPreservedState("state");
+        oAuth2RestTemplate.getOAuth2ClientContext().getAccessTokenRequest().setPreservedState("http://127.0.0.1:8091/oauth/callback");
         return oAuth2RestTemplate.getAccessToken();
     }
 
