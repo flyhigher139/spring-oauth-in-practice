@@ -25,7 +25,8 @@
     <description>spring-oauth-in-practice</description>
     <properties>
         <java.version>1.8</java.version>
-        <oauth2.autoconfigure.version>2.6.1</oauth2.autoconfigure.version>
+<!--        <oauth2.autoconfigure.version>2.6.1</oauth2.autoconfigure.version>-->
+        <oauth2.autoconfigure.version>2.1.2.RELEASE</oauth2.autoconfigure.version>
     </properties>
     <dependencies>
         <dependency>

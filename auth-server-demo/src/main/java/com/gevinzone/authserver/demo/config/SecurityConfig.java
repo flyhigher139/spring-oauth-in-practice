@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
@@ -30,11 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("admin").password("admin").roles("ADMIN");
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/oauth/**").permitAll()
-                .and().formLogin().permitAll()
-                .and().logout().permitAll();
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/oauth/**").permitAll()
+//                .and().formLogin().permitAll()
+//                .and().logout().permitAll();
+//    }
 }
