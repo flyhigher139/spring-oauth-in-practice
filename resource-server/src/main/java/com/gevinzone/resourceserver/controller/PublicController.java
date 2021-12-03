@@ -10,37 +10,26 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
-
+@RequestMapping("/public")
 @RestController
-@RequestMapping("/resources")
-public class ResourceController {
+public class PublicController {
     @GetMapping(value = "/demo", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getDemoResource() {
         return "{\"hello\": \"world\"}";
     }
 
-    @GetMapping(value = "/demo2", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getDemoResource2() {
-        return "{\"hello\": \"world\"}";
-    }
-
-    @GetMapping(value = "/username")
-    public String currentUserName(Principal principal) {
-        return principal.getName();
-    }
-
-    @GetMapping(value = "/username2")
-    public String currentUserName(HttpServletRequest request) {
+    @GetMapping(value = "/username", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getUsernameIfToken(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
 
-        return principal.getName();
+        return principal == null ? "anonymous" : principal.getName();
     }
 
-    @GetMapping(value = "/username3")
-    public String currentUserName() {
+    @GetMapping(value = "/username2", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getUsername2IfToken() {
         Authentication authentication = SecurityContextHolder.getContext()
                 .getAuthentication();
 
-        return  authentication.getName();
+        return "anonymousUser".equals(authentication.getName()) ? "anonymous" : authentication.getName();
     }
 }
