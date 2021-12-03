@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    username: gevin
+    password: gevin
+    url: jdbc:mysql://localhost:3306/oauth-demo?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
